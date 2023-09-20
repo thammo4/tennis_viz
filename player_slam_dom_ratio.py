@@ -5,14 +5,20 @@ pd.options.mode.chained_assignment = None  # default='warn'
 
 ## path to repo with relevant data
 ## ( https://github.com/JeffSackmann/tennis_atp )
-data_prefix = '../tennis_atp/'
+data_prefix = 'https://github.com/JeffSackmann/tennis_atp/'
 
 player = 'Roger Federer'
+
+# 'https://github.com/JeffSackmann/tennis_atp/blob/master/atp_matches_' + str(y) + '.csv'
+
+
 
 player_slams = []
 for y in range(2003,2022):
     ## load matches and reduce to the target player, in first four rounds at slams
-    matches = pd.read_csv(data_prefix + 'atp_matches_' + str(y) + '.csv')
+    # matches = pd.read_csv(data_prefix + 'atp_matches_' + str(y) + '.csv')
+    matches = pd.read_csv("https://raw.githubusercontent.com/JeffSackmann/tennis_atp/master/atp_matches_" + str(y) + ".csv");
+
     pmatches =  matches.loc[(matches['winner_name'] == player) | (matches['loser_name'] == player)]
     first_rounds = ['R128', 'R64', 'R32', 'R16']
     tmatches = pmatches.loc[(pmatches['tourney_level'] == 'G') & (pmatches['round'].isin(first_rounds))]
@@ -87,4 +93,4 @@ points = alt.Chart(titles).mark_point(filled=True, size=200, color='orange').enc
     alt.Y('DR')
 )
     
-(line + points).save('output/federer_slam_dr.html')
+(line + points).save('output/federer_slam34343434_dr.html')
