@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import altair as alt
+import altair_viewer
 import pandas as pd
 pd.options.mode.chained_assignment = None  # default='warn'
 
@@ -7,7 +8,9 @@ pd.options.mode.chained_assignment = None  # default='warn'
 ## ( https://github.com/JeffSackmann/tennis_atp )
 data_prefix = 'https://github.com/JeffSackmann/tennis_atp/'
 
-player = 'Roger Federer'
+player = 'Roger Federer';
+player = 'Andy Roddick';
+
 
 # 'https://github.com/JeffSackmann/tennis_atp/blob/master/atp_matches_' + str(y) + '.csv'
 
@@ -93,4 +96,6 @@ points = alt.Chart(titles).mark_point(filled=True, size=200, color='orange').enc
     alt.Y('DR')
 )
     
-(line + points).save('output/federer_slam34343434_dr.html')
+# (line + points).save('output/federer_slam34343434_dr.html')
+(line+points).show();
+(line + points).save('output/roddick.html')
